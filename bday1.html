@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Celebration</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            background-color: #ffe4e1; /* Uniform background */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        h1, h2, h4 {
+            margin: 10px 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #d500f9;
+            font-size: 36px;
+        }
+
+        h2 {
+            color: #ff4081;
+            font-size: 28px;
+        }
+
+        h4 {
+            color: #ff1744;
+            font-size: 22px;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .cake-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin-top: 20px;
+        }
+
+        .cake {
+            width: 100%;
+            height: 100%;
+            background-color: #ff4081;
+            border-radius: 50% 50% 0 0;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .cake-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 12px;
+            color: white;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .cake::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 5px;
+            background-color: #FF9800;
+            border-radius: 5px;
+        }
+
+        /* Sidebar for Image and Paragraph */
+        .sidebar {
+            width: 40%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: #ffe4e1; /* Match the webpage background color */
+        }
+
+        .sidebar img {
+            width: auto; /* Maintain aspect ratio */
+            max-width: 90%; /* Limit width to 90% of the container */
+            max-height: 300px; /* Limit height to 300px */
+            border: 5px solid #ff4081; /* Border to emphasize the image */
+            border-radius: 10px; /* Slightly rounded corners */
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar p {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        audio {
+            margin-top: 20px;
+            outline: none;
+        }
+
+        .heart {
+            position: absolute;
+            animation: float 4s infinite ease-in-out;
+            z-index: 1;
+        }
+
+        /* Poppers Animation */
+        .popper {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            transform: rotate(0deg);
+            animation: float 4s infinite ease-in-out;
+        }
+
+        /* Keyframes for floating animation */
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <img src="C:\Users\vaish\Downloads\IMG-20250123-WA0005.jpg" alt="Birthday Girl">
+        <p>
+            Happy Birthday to the most amazing person in the world! May your day be as beautiful and sweet as you are. Wishing you all the love, laughter, and joy on your special day. You are truly one of a kind! I &hearts; ey Raakshasi!!
+        </p>
+        <audio controls autoplay>
+            <source src="https://www.bensound.com/bensound-music/bensound-happyrock.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1>Let's Celebrate Your Special Day!</h1>
+        <h2>HAPPIEE BIRTHDAY BEAUTIFUL &lt;3</h2>
+        <h4>I &hearts; Bangaram</h4>
+
+        <!-- Cake -->
+        <div class="cake-container">
+            <div class="cake">
+                <div class="cake-text">idigo cake uu</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Poppers Animation -->
+    <script>
+        const body = document.body;
+
+        function createFloatingElement() {
+            const element = document.createElement('div');
+            const isHeart = Math.random() > 0.5; // 50% chance of creating a heart or popper
+            element.classList.add(isHeart ? 'heart' : 'popper');
+
+            // Position randomly along the width
+            element.style.left = Math.random() * 100 + 'vw';
+
+            // Heart or Popper specific styles
+            if (isHeart) {
+                element.style.color = 'red';
+                element.textContent = '❤️'; // Heart emoji
+                element.style.fontSize = Math.random() * 20 + 15 + 'px'; // Random sizes
+            } else {
+                element.style.background = 'linear-gradient(45deg, #FF9AA2, #FFB7B2, #FFDAC1, #E2F0CB, #B5EAD7, #C7CEEA)';
+            }
+
+            // Random animation duration
+            element.style.animationDuration = Math.random() * 2 + 3 + 's';
+            body.appendChild(element);
+
+            // Remove element after 4 seconds
+            setTimeout(() => {
+                element.remove();
+            }, 4000);
+        }
+
+        setInterval(createFloatingElement, 400); // Generate elements every 400ms
+    </script>
+</body>
+</html>
